@@ -15,6 +15,7 @@ Install with pip install openpyxl
 
 <h2>Postman Collections</h2>
 I can't remember if I have found an original version of those anywhere or I built them myself. If you find part of them anywhere please let me know so I can give proper credit.
+I am pretty certain I have built this myself sometime during the COVID-19 period.
 
 The Checkpoint Community site has a big list of collections and the v.1.5 API collection is a lot bigger and different from this one, so this doesn't come from there.
 I was requested to share this so I am posting fast.

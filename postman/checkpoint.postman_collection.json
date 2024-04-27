@@ -1,0 +1,998 @@
+{
+	"info": {
+		"_postman_id": "22618656-1d7f-4142-8ab8-d48018dd1a78",
+		"name": "checkpoint",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\" : \"{{username}}\",\r\n  \"password\" : \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/login",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"standard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-hosts",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-hosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/logout",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-roles",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-roles",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-rulebase",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"offset\" : 0,\r\n  \"limit\" : 1000,\r\n  \"name\" : \"{{security-policy}}\",\r\n  \"details-level\" : \"standard\",\r\n  \"use-object-dictionary\" : false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-rulebase",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-rulebase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-layer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\" : \"{{chkp-access-layer}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-layer",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-layer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-section",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"layer\" : \"{{chkp-access-layer}}\",\r\n  \"name\" : \"{{chkp-section-name}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-section",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-section"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-layers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 50,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"standard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-layers",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-layers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "objects",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"order\" : [ {\r\n    \"ASC\" : \"name\"\r\n  } ],\r\n  \"type\" : \"host\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-objects",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "objects-filter for nagios",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 10,\r\n  \"offset\" : 0,\r\n  \"order\" : [ {\r\n    \"ASC\" : \"name\"\r\n  } ],\r\n  \"in\" : [ \"name\", \"nagios\" ],\r\n  \"type\" : \"object\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-objects",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "host",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-hosts",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-hosts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-rulebase - full - expand group members",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"offset\" : 0,\r\n  \"limit\" : 30,\r\n  \"name\" : \"{{security-policy}}\",\r\n  \"details-level\" : \"full\",\r\n  \"use-object-dictionary\" : true,\r\n  \"dereference-group-members\" : true,\r\n  \"show-membership\" : true,\r\n  \"filter\" : \"vpn: any\",\r\n  \"filter-settings\" : {\r\n      \"search-mode\" : \"packet\",\r\n      \"packet-search-settings\" : {\r\n          \"expand-group-members\" : true\r\n      }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-rulebase",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-rulebase"
+					]
+				},
+				"description": "get the policy"
+			},
+			"response": []
+		},
+		{
+			"name": "objects-filter with uid",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 1000,\r\n  \"order\" : [ {\r\n    \"ASC\" : \"uid\"\r\n  } ],\r\n  \"in\" : [ \"uid\", \"657fd628-3a6d-4e4c-9d0a-0ebd1ed076cd\" ],\r\n  \"type\" : \"object\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-objects",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Networks",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-networks",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-networks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Networks-filter",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"standard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-networks",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-networks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "groups",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-groups",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dynamic objects",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-dynamic-objects",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-dynamic-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-rulebase - simple - big",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"offset\" : 0,\r\n  \"limit\" : 500,\r\n  \"name\" : \"{{security-policy}}\",\r\n  \"details-level\" : \"full\",\r\n  \"use-object-dictionary\" : true,\r\n  \"show-membership\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-rulebase",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-rulebase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dns domains",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-dns-domains",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-dns-domains"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatable objects",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-updatable-objects",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-updatable-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "dynamic objects",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-dynamic-objects",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-dynamic-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "groups",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-groups",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "services tcp",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-services-tcp",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-services-tcp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "services udp",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"limit\" : 500,\r\n  \"offset\" : 0,\r\n  \"details-level\" : \"full\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-services-udp",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-services-udp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "access-rulebase - full - no dict",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-chkp-sid",
+						"value": "{{X-chkp-sid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"offset\" : 0,\r\n  \"limit\" : 30,\r\n  \"name\" : \"{{security-policy}}\",\r\n  \"details-level\" : \"full\",\r\n  \"use-object-dictionary\" : false,\r\n  \"dereference-group-members\" : true,\r\n  \"show-membership\" : true,\r\n  \"filter\" : \"vpn: any\",\r\n  \"filter-settings\" : {\r\n      \"search-mode\" : \"packet\",\r\n      \"packet-search-settings\" : {\r\n          \"expand-group-members\" : true\r\n      }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{chkp-server}}:{{chkp-port}}/web_api/v1.5/show-access-rulebase",
+					"protocol": "https",
+					"host": [
+						"{{chkp-server}}"
+					],
+					"port": "{{chkp-port}}",
+					"path": [
+						"web_api",
+						"v1.5",
+						"show-access-rulebase"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "X-chkp-sid",
+			"value": "xXIiiBSrL_5hT6I42rTdmvWgD89E-isGHABV-wWS71o"
+		},
+		{
+			"key": "chkp-server",
+			"value": "10.130.154.10"
+		},
+		{
+			"key": "chkp-port",
+			"value": "4434"
+		}
+	]
+}
